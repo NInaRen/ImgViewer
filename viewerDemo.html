@@ -1,0 +1,23 @@
+<html>
+<link rel="stylesheet" href="css/viewer.css">
+<body>
+
+<div>
+    <div id="viewer-image"></div>
+</div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/viewer-switch.js"></script>
+<script>
+    $("#viewer-image").ImgViewer({
+	    id: "viewer-image",
+	    imgList:["img/tibet-1.jpg","img/tibet-2.jpg","img/tibet-3.jpg"],
+        height: "200px",
+        width: "200px",
+	    initIndex: 0,
+	    zIndex: 2018
+    });
+</script>
+</html>
