@@ -4,6 +4,7 @@
 
 <div>
     <div id="viewer-image"></div>
+    <div id="viewer-image2"></div>
 </div>
 
 </body>
@@ -16,6 +17,15 @@
 	    imgList:["img/tibet-1.jpg","img/tibet-2.jpg","img/tibet-3.jpg"],
         height: "200px",
         width: "200px",
+	    initIndex: 0,
+	    zIndex: 2018
+    });
+
+    $("#viewer-image2").ImgViewer({
+	    id: "viewer-image2",
+	    imgList:["img/12.png","img/34.png","img/tibet-3.jpg"],
+	    height: "200px",
+	    width: "200px",
 	    initIndex: 0,
 	    zIndex: 2018
     });

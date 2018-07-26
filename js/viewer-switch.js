@@ -34,7 +34,7 @@
 
 			var template = '<div class="viewer-image-wrapper" style="height: '+ opt.height + ';width: '+ opt.width + ';position: relative">' +
 				'        <span class="viewer-turn-button viewer-prev pre-button"></span>' +
-				'        <ul id="viewer-images">';
+				'        <ul id="viewer-images-'+ opt.id +'" class="viewer-images">';
 			$(opt.imgList).each(function (index, img) {
 				if (opt.initIndex == index){
 					template += '<li class="viewer-selected"><img src="' + img + '"></li>';
@@ -46,28 +46,29 @@
 
 			$("#" + opt.id).append(template);
 
-			var $image = $('#viewer-images');
-			$('#viewer-images').viewer({
+			$('#viewer-images-' + opt.id).viewer({
 				zIndex: opt.zIndex
 			});
 			this.bind(opt);
 		},
 		bind: function (opt) {
-			showButtons($(".viewer-selected"));
+			showButtons($("#" + opt.id).find(".viewer-selected"));
 
 			$("#" + opt.id).on("click", ".pre-button", function () {
-				var selected = $(".viewer-selected").prev();
+				console.log(opt.id);
+				var selected = $("#" + opt.id).find(".viewer-selected").prev();
 				if (selected.length > 0) {
-					$(".viewer-selected").removeClass("viewer-selected");
+					$("#" + opt.id).find(".viewer-selected").removeClass("viewer-selected");
 					selected.addClass("viewer-selected");
 					showButtons(selected);
 				}
 			})
 
 			$("#" + opt.id).on("click", ".next-button", function () {
-				var selected = $(".viewer-selected").next();
+				console.log(opt.id);
+				var selected = $("#" + opt.id).find(".viewer-selected").next();
 				if (selected.length > 0) {
-					$(".viewer-selected").removeClass("viewer-selected");
+					$("#" + opt.id).find(".viewer-selected").removeClass("viewer-selected");
 					selected.addClass("viewer-selected");
 					showButtons(selected);
 				}
@@ -75,14 +76,14 @@
 
 			function showButtons(selected) {
 				if (selected.prev().length == 0) {
-					$(".pre-button").addClass("viewer-button-hide");
+					$("#" + opt.id).find(".pre-button").addClass("viewer-button-hide");
 				} else {
-					$(".pre-button").removeClass("viewer-button-hide");
+					$("#" + opt.id).find(".pre-button").removeClass("viewer-button-hide");
 				}
 				if (selected.next().length == 0) {
-					$(".next-button").addClass("viewer-button-hide");
+					$("#" + opt.id).find(".next-button").addClass("viewer-button-hide");
 				} else {
-					$(".next-button").removeClass("viewer-button-hide");
+					$("#" + opt.id).find(".next-button").removeClass("viewer-button-hide");
 				}
 			}
 		},
